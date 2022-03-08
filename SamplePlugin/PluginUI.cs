@@ -2,7 +2,7 @@
 using System;
 using System.Numerics;
 
-namespace SamplePlugin
+namespace RandomScreenshot
 {
     // It is good to have this be disposable in general, in case you ever need it
     // to do any cleanup
@@ -63,7 +63,7 @@ namespace SamplePlugin
             ImGui.SetNextWindowSizeConstraints(new Vector2(375, 330), new Vector2(float.MaxValue, float.MaxValue));
             if (ImGui.Begin("My Amazing Window", ref this.visible, ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse))
             {
-                ImGui.Text($"The random config bool is {this.configuration.SomePropertyToBeSavedAndWithADefault}");
+                ImGui.Text($"The random config bool is {this.configuration.HideUI}");
 
                 if (ImGui.Button("Show Settings"))
                 {
@@ -92,10 +92,18 @@ namespace SamplePlugin
                 ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse))
             {
                 // can't ref a property, so use a local copy
-                var configValue = this.configuration.SomePropertyToBeSavedAndWithADefault;
-                if (ImGui.Checkbox("Random Config Bool", ref configValue))
+                var HideUI = this.configuration.HideUI;
+                if (ImGui.Checkbox("Hide UI", ref HideUI))
                 {
-                    this.configuration.SomePropertyToBeSavedAndWithADefault = configValue;
+                    this.configuration.HideUI = HideUI;
+                    // can save immediately on change, if you don't want to provide a "Save and Close" button
+                    this.configuration.Save();
+                }
+
+                var ScreenshotIntervalInMS = this.configuration.ScreenshotIntervalInMS;
+                if (ImGui.Checkbox("Hide UI", ref ScreenshotIntervalInMS))
+                {
+                    this.configuration.ScreenshotIntervalInMS = ScreenshotIntervalInMS;
                     // can save immediately on change, if you don't want to provide a "Save and Close" button
                     this.configuration.Save();
                 }

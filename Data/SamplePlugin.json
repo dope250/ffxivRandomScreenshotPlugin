@@ -1,13 +1,12 @@
 {
-  "Author": "your name here",
-  "Name": "Sample Plugin",
-  "Punchline": "A short one-liner that shows up in /xlplugins.",
-  "Description": "A description that shows up in /xlplugins. List any major slash-command(s).",
-  "InternalName": "samplePlugin",
-  "ApplicableVersion": "any",
-  "Tags": [
-    "sample",
-    "plugin",
-    "goats"
-  ]
+    "Author": "dope250",
+    "Name": "Random Screenshot",
+    "Punchline": "Makes Random Screenshots with or without UI",
+    "Description": "A description that shows up in /xlplugins. List any major slash-command(s).",
+    "InternalName": "samplePlugin",
+    "ApplicableVersion": "any",
+    "Tags": [
+        "screenshot",
+        "plugin"
+    ]
 }

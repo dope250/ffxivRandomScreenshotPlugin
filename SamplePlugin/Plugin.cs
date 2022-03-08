@@ -4,13 +4,13 @@ using Dalamud.Plugin;
 using System.IO;
 using System.Reflection;
 
-namespace SamplePlugin
+namespace RandomScreenshot
 {
     public sealed class Plugin : IDalamudPlugin
     {
-        public string Name => "Sample Plugin";
+        public string Name => "Random Screenshot";
 
-        private const string commandName = "/pmycommand";
+        private const string commandName = "/rndscrn";
 
         private DalamudPluginInterface PluginInterface { get; init; }
         private CommandManager CommandManager { get; init; }
@@ -49,8 +49,21 @@ namespace SamplePlugin
 
         private void OnCommand(string command, string args)
         {
-            // in response to the slash command, just display our main ui
-            this.PluginUi.Visible = true;
+            switch (command)
+            {
+                case "/rndscrn on":
+                    //ActivateTimer(this.Configuration.Interval, this.Configuration.HideUI)
+                    //Chat: "Random Screenshot: Enabled"
+                    break;
+                case "/rndscrn off":
+                    //DeactivateTimer();
+                    //Chat: "Random Screenshot: Disabled
+                    break;
+                default:
+                    // in response to the slash command, just display our main ui
+                    this.PluginUi.Visible = true;
+                    break;
+            }
         }
 
         private void DrawUI()

@@ -2,15 +2,15 @@
 using Dalamud.Plugin;
 using System;
 
-namespace SamplePlugin
+namespace RandomScreenshot
 {
     [Serializable]
     public class Configuration : IPluginConfiguration
     {
         public int Version { get; set; } = 0;
 
-        public bool SomePropertyToBeSavedAndWithADefault { get; set; } = true;
-
+        public bool HideUI { get; set; } = true;
+        public int ScreenshotIntervalInMS { get; set; } = 60000;
         // the below exist just to make saving less cumbersome
 
         [NonSerialized]
